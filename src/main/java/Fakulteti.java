@@ -146,4 +146,100 @@ public class Fakulteti {
     public String getDejnosti(){
         return dejnosti;
     }
+    /***********************************************************************************************************/
+    public int brojNaSprat(int broj){
+        boolean daliETocnaNavigacijata=false;
+        if(broj==-1 || broj==0 || broj==1 || broj==2){
+            return broj;
+            daliETocnaNavigacijata=true;
+        }
+    }
+    public void navigacijaNaSpratovite(int brojce,String kancelarija){
+        if(brojNaSprat(brojce)==-1){
+            if(kancelarija.equals("Lab2") || kancelarija.equals("Lab3")){
+                System.out.println("Simnete se vo podrumot na TMF i svrtete nadesno");
+            }
+            else if(kancelarija.equals("Kabinet37") || kancelarija.equals("Kabinet36") || kancelarija.equals("Kabinet35") || kancelarija.equals("Kabinet34") || kancelarija.equals("Kabinet26A") || kancelarija.equals("Kabinet26")){
+                System.out.println("Simnete se vo podrumot na TMF i svrtete nalevo");
+            }
+            else if(kancelarija.equals("Lab12") || kancelarija.equals("Lab13")){
+                System.out.println("Simnete se vo podrumot na TMF,svrtete nalevo dvapati,odete na krajot na hodnikot");
+            }
+        }
+        else if(brojNaSprat(brojce)==0){
+            if(kancelarija.equals("AmfiteatarTMF")){
+                System.out.println("Odete na krajot na vlezot na chelo,svrtete nadesno po skalickite");
+            }
+            else if(kancelarija.equals("Lab138")){
+                System.out.println("Na samiot vlez svrtete nadesno,odete po hodnikot,pa svrtete na prvoto levo");
+            }
+            else if(kancelarija.equals("Kabinet122") || kancelarija.equals("Kabinet114") || kancelarija.equals("Kabinet115") || kancelarija.equals("Kabinet116")){
+                System.out.println("Na samiot vlez svrtete nadesno,odete po hodnikot,pa svrtete na prvoto levo");
+            }
+            else if(kancelarija.equals("Baraka2.1") || kancelarija.equals("Baraka2.2") || kancelarija.equals("Baraka3.1") || kancelarija.equals("Baraka3.2") || kancelarija.equals("Baraka1")){
+                System.out.println("Odete pozadi aneksot na FEIT,odete nachelo");
+            }
+        }
+        else if(brojNaSprat(brojce)==1){
+            if(kancelarija.equals("Lab200A") || kancelarija.equals("Lab200B")){
+                System.out.println("Kacete se po skalickite na prviot sprat i svrtete nadesno");
+            }
+            else if(kancelarija.equals("Laab200V")){
+                System.out.println("Kacete se po skalickite na prviot sprat i svrtete dvapati nadesno");
+            }
+            else if(kancelarija.equals("Predavalna203")){
+                System.out.println("Kacete se po skalickite na prviot sprat,svrtete nadesno,pa svrtete nalevo");
+            }
+            else if(kancelarija.equals("Lab215") || kancelarija.equals("Predavalna216")){
+                System.out.println("Kacete se po skalickite na prviot sprat,svrtete nalevo dvapati");
+            }
+            else if(kancelarija.equals("Kabinet222")){
+                System.out.println("Kacete se po skalickite na prviot sprat,svrtete nalevo,pa svrtete nadesno");
+            }
+        }
+        else if(brojNaSprat(brojce)==2){
+            if(kancelarija.equals("Predavalna315")){
+                System.out.println("Kacete se po skalickite na vtoriot sprat,svrtete nalevo dva pati");
+            }
+            else if(kancelarija.equals("Kabinet321") || kancelarija.equals("Kabinet322") || kancelarija.equals("Kabinet332")){
+                System.out.println("Kacete se po skalickite na vtoriot sprat,svrtete nalevo,pa nadesno");
+            }
+            else if(kancelarija.equals("Predavalna302")){
+                System.out.println("Kacete se po skalickite na vtoriot sprat,svrtete nadesno dva pati");
+            }
+        }
+    }
+    public boolean publishTimeTable(int cas,int minuti,String [] predmet){
+        int brojNaObjektiVoCiklusot;
+        String predmetce;
+        for(int brojac=0;brojac<6;brojac++){
+            if(cas>=8 && cas<=20){
+                if(minuti==0 || minuti==45){
+                    for(int novBrojac=0;novBrojac<2;novBrojac++){
+                        if(predmet[brojac].equals(predmetce)){
+                            System.out.println(predmet[brojac]);
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public boolean mail(String [] mail){
+        boolean praten_e_mailot=false;
+        int br;
+        String kabinet;
+        for(int brojac=0;brojac<mail.length;brojac++){
+            if(brojac==mail.length){
+                if(brojNaSprat(br)){
+                    if(kabinet.equals()){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+            }
+        }
+    }
 }

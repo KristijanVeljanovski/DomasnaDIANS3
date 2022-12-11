@@ -11,7 +11,12 @@ public class BibliotekiIKnizarnici {
     private String [] knigiNaPoracka;
     private int [] rejting;
     private String ime;
-    public BibliotekiIKnizarnici(String adresa,String mesto,int oddalecenost,int rabotnoVreme,String dejnosti,String [] knigi,String [] bibliotekari,int cenaZaKniga,String [] knigiNaPoracka,int [] rejting,String ime){
+    private String [] avtor;
+    private int goleminaNaKniga;
+    private String username,
+    private String password;
+    private String pateka;
+    public BibliotekiIKnizarnici(String adresa,String mesto,int oddalecenost,int rabotnoVreme,String dejnosti,String [] knigi,String [] bibliotekari,int cenaZaKniga,String [] knigiNaPoracka,int [] rejting,String ime,String [] avtor,int goleminaNaKniga.String username,String password,String pateka){
         this.adresa=adresa;
         this.mesto=mesto;
         this.oddalecenost=oddalecenost;
@@ -31,6 +36,45 @@ public class BibliotekiIKnizarnici {
             this.rejting[brojac]=rejting[brojac];
         }
         this.ime=ime;
+        for(int brojac=0;brojac<avtor.length;brojac++){
+            this.avtor[brojac]=avtor[brojac];
+        }
+        this.goleminaNaKniga=goleminaNaKniga;
+        this.username=username;
+        this.password=password;
+        this.pateka=pateka
+    }
+    public void setPateka(String nasoka){
+        this.pateka=nasoka;
+    }
+    public String getPateka(){
+        return pateka;
+    }
+    public void setUsername(String user){
+        this.username=user;
+    }
+    public String getUsername(){
+        return username;
+    }
+    public void setPassword(String pass){
+        this.password=pass;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public void setGoleminaNaKniga(int golemina){
+        this.goleminaNaKniga=golemina;
+    }
+    public int getGoleminaNaKniga(){
+        return goleminaNaKniga;
+    }
+    public void setAvtor(String [] a){
+        for(int brojac=0;brojac<a.length;brojac++){
+            this.avtor[brojac]=a[brojac];
+        }
+    }
+    public String getAvtor(int brojac){
+        return avtor[brojac];
     }
     public void setIme(String i){
         this.ime=i;
@@ -150,5 +194,88 @@ public class BibliotekiIKnizarnici {
     }
     public String getDejnosti(){
         return dejnosti;
+    }
+    public void porackaNaKnigi(String [] knigi,String [] avtor){
+        for(int brojac=0,novBrojac=0;brojac<knigi.length && novBrojac<avtor.length;brojac++,novBrojac++){
+            knigi[brojac].setKnigi(knigi);
+            avtor[brojac].setImeNaAvtor();
+        }
+    }
+    public void proverkaNaGoleminaNaKnigi(String [] knigi){
+        int maksGoleminaNaTiraz;
+        for(int brojac=0;brojac<knigi.length;brojac++){
+            if(knigi[brojac].getGoleminaNaKniga()<=maksGoleminaNaTiraz){
+                System.out.println(knigi[brojac]);
+            }
+        }
+    }
+    public void getLokacija(){
+        if(getIme().equals("1000 Knigi")){
+            System.out.println("Kej 13ti Noemvri 8,Skopje 1000");
+        }
+        else if(getIme().equals("Brakja Miladinovci")){
+            System.out.println("Bulevar Partizanski Odredi 22");
+        }
+        else if(getIme().equals("Jordan Hadzi Konstantinov Dzinot")){
+            System.out.println("Ivan Hadzinikolov 6-a Lokacija 6");
+        }
+        else if(getIme().equals("Dom Na Kultura Ilinden")){
+            System.out.println("Ulica 9,Naselba Ilinden Broj 12");
+        }
+    }
+    public void najava(String username,String password){
+        if(username==getUsername() && password==getPassword()){
+            return getLokacija();
+        }
+    }
+    public void patekaOdFakultetDoBiblioteka(String imeFaks,String imeBiblioteka){
+        if((imeFaks.equals("FINKI") || imeFaks.equals("FEIT") || imeFaks.equals("TMF") || imeFaks.equals("MFS")) && imeBiblioteka.equals("1000 Knigi")){
+            if(getPateka().equals("Bulevar Partizanski Odredi")){
+                System.out.println("Odete na Shekspirova do Bulevar Partizanski Odredi");
+                System.out.println("Od Bulevar Partizanski Odredi odete do Bulevar Goce Delcev pa potoa odete do Kej 13ti Noemvri");
+                System.out.println("Svrtete nadesno na Kej 13ti Noemvri");
+            }
+            else if(getPateka().equals("Bulevar Ilinden")){
+                System.out.println("Odete do Nikola Tesla");
+                System.out.println("Sledno odete od Bulevar Ilinden do Kej 13ti Noemvri");
+                System.out.println("Svrtete nadesno na Kej 13ti Noemvri");
+            }
+            else if(getPateka().equals("Orce Nikolov")){
+                System.out.println("Odete do Nikola Tesla");
+                System.out.println("Svrtete nalevo na prvata raskrsnica");
+                System.out.println("Svrtete nadesno na Orce Nikolov");
+                System.out.println("Odete po Bulevar Goce Delcev i Filip Vtori Makedonski do Kej 13ti Noemvri");
+                System.out.println("Svrtete nadesno na Kej 13ti Noemvri");
+            }
+        }
+        if((imeFaks.equals("FINKI") || imeFaks.equals("FEIT") || imeFaks.equals("TMF") || imeFaks.equals("MFS")) && imeBiblioteka.equals("Gradska Biblioteka Brakja Mildainovci")){
+            if(getPateka().equals("Orce Nikolov")){
+                System.out.println("Upatete se zapadno na Rugjer Boskovic");
+                System.out.println("Svrtete nadesno");
+                System.out.println("Svrtete nadesno na Nikola Tesla");
+                System.out.println("Svrtete nalevo na prvata raskrsnica");
+                System.out.println("Svrtete nadesno na Orce Nikolov");
+                System.out.println("Svrtete nadesno na Miroslav Krlezha");
+                System.out.println("Svrtete nadesno na Antonie Grubishikj");
+            }
+        }
+        if((imeFaks.equals("FINKI") || imeFaks.equals("FEIT") || imeFaks.equals("TMF") || imeFaks.equals("MFS")) && imeBiblioteka.equals("Jordan Hadzi Konstantinov Dzinot")){
+            if(getPateka().equals("Bulevar 3ta Makedonska Brigada")){
+                System.out.println("Odete po Shekspirova do Bulevar Partizanski Odredi");
+                System.out.println("Odete po Mitropolit Teodosij Gologanov,Jordan Mijalkov,Bulevar 3ta Makedonska Brigada,Bulevar 12ta Makedonska Brigada i Justinijan Prvi do Ivan Hadzinikolov vo Dracevo");
+            }
+            else if(getPateka().equals("Bulevar Partizanski Odredi i Bulevar 3ta Makedonska Brigada") || getPateka().equals("Bulevar 3ta Makedonska Brigada i 1523")){
+                System.out.println("Prodolzete do Nikola Tesla");
+                System.out.println("Odete po Mitropolit Teodosij Gologanov,Jordan Mijalkov,Bulevar 3ta Makedonska Brigada,Bulevar 12ta Makedonska Brigada i Justinijan Prvi do Ivan Hadzinikolov vo Dracevo");
+            }
+        }
+        if((imeFaks.equals("FINKI") || imeFaks.equals("FEIT") || imeFaks.equals("TMF") || imeFaks.equals("MFS")) &&imeBiblioteka.equals("Dom na Kultura - Ilinden")){
+            if(getPateka().equals("Bulevar Aleksandar Makedonski")){
+                System.out.println("Odete po bulevar 8-mi Septemvri do Bulevar Nikola Karev");
+                System.out.println("Odete posle po bulevar Aleksandar Makedonski do Opshtina Ilinden");
+                System.out.println("Izlezete od A2");
+                System.out.println("Odete od ulica 2 do ulica 9");
+            }
+        }
     }
 }

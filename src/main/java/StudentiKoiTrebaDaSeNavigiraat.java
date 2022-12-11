@@ -9,7 +9,9 @@ public class StudentiKoiTrebaDaSeNavigiraat implements Filter {
     private Fakulteti faks;
     private StudentskiDomovi dom;
     private String [] nasoki;
-    public StudentiKoiTrebaDaSeNavigiraat(String imeprezime,int godini,int indeks,int brojNaClenskaOdBiblioteka,int brojNaKreditnaKarticka,int IPadresa,int telefonskiBroj,Fakulteti faks,StudentskiDomovi dom,String nasoki){
+    private String lozinka;
+    private String lokacija;
+    public StudentiKoiTrebaDaSeNavigiraat(String imeprezime,int godini,int indeks,int brojNaClenskaOdBiblioteka,int brojNaKreditnaKarticka,int IPadresa,int telefonskiBroj,Fakulteti faks,StudentskiDomovi dom,String nasoki,String lozinka,String lokacija){
         this.imeprezime=imeprezime;
         this.godini=godini;
         this.indeks=indeks;
@@ -20,6 +22,20 @@ public class StudentiKoiTrebaDaSeNavigiraat implements Filter {
         this.faks=faks;
         this.dom=dom;
         this.nasoki=nasoki;
+        this.lozinka=lozinka;
+        this.lokacija=lokacija;
+    }
+    public void setLokacija(String l){
+        this.lokacija=l;
+    }
+    public String getLokacija(){
+        return lokacija;
+    }
+    public void setLozinka(String l){
+        this.lozinka=l;
+    }
+    public String getLozinka(){
+        return lozinka;
     }
     public void setNasoki(String n){
         this.nasoki=n;
