@@ -30,6 +30,31 @@ public class PipeAndFilterProblemMapAndNavigation implements Filter{
             System.out.println(tretaCevka);
             System.out.println(cetvrtaCevka);
         }
-
+        Cevka<String> iminjaNaKancelarii=new Cevka<>();
+        iminjaNaKancelarii.addFilter(filter);
+        while(skener.hasNextLine()){
+            String pateki=skener.nextLine();
+            String prvaCevka=iminjaNaKancelarii.runFilters(pateki);
+            String vtoraCevka=iminjaNaKancelarii.runFilters(pateki);
+            String tretaCevka=iminjaNaKancelarii.runFilters(pateki);
+            String cetvrtaCevka=iminjaNaKancelarii.runFilters(pateki);
+            System.out.println(prvaCevka);
+            System.out.println(vtoraCevka);
+            System.out.println(tretaCevka);
+            System.out.println(cetvrtaCevka);
+        }
+        Cevka<String> iminjaNaMoteli=new Cevka<>();
+        iminjaNaMoteli.addFilter(filter);
+        while(skener.hasNextLine()){
+            String pateki=skener.nextLine();
+            String prvaCevka=iminjaNaMoteli.runFilters(pateki);
+            String vtoraCevka=iminjaNaMoteli.runFilters(pateki);
+            String tretaCevka=iminjaNaMoteli.runFilters(pateki);
+            String cetvrtaCevka=iminjaNaMoteli.runFilters(pateki);
+            System.out.println(prvaCevka);
+            System.out.println(vtoraCevka);
+            System.out.println(tretaCevka);
+            System.out.println(cetvrtaCevka);
+        }
     }
 }

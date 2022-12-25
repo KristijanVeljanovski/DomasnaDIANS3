@@ -11,7 +11,9 @@ public class StudentiKoiTrebaDaSeNavigiraat implements Filter {
     private String [] nasoki;
     private String lozinka;
     private String lokacija;
-    public StudentiKoiTrebaDaSeNavigiraat(String imeprezime,int godini,int indeks,int brojNaClenskaOdBiblioteka,int brojNaKreditnaKarticka,int IPadresa,int telefonskiBroj,Fakulteti faks,StudentskiDomovi dom,String nasoki,String lozinka,String lokacija){
+    private int [] proseciOdSrednoObrazovanie;
+    private String [] referenci;
+    public StudentiKoiTrebaDaSeNavigiraat(String imeprezime,int godini,int indeks,int brojNaClenskaOdBiblioteka,int brojNaKreditnaKarticka,int IPadresa,int telefonskiBroj,Fakulteti faks,StudentskiDomovi dom,String nasoki,String lozinka,String lokacija,int [] proseciOdSrednoObrazovanie,String [] referenci){
         this.imeprezime=imeprezime;
         this.godini=godini;
         this.indeks=indeks;
@@ -24,6 +26,28 @@ public class StudentiKoiTrebaDaSeNavigiraat implements Filter {
         this.nasoki=nasoki;
         this.lozinka=lozinka;
         this.lokacija=lokacija;
+        for(int brojac=0;brojac<4;brojac++){
+            this.proseciOdSrednoObrazovanie[brojac]=proseciOdSrednoObrazovanie[brojac];
+        }
+        for(int brojac=0;brojac<referenci.length;brojac++){
+            this.referenci[brojac]=referenci[brojac];
+        }
+    }
+    public void setReferenci(String [] r){
+        for(int brojac=0;brojac<referenci.length;brojac++){
+            this.referenci[brojac]=r[brojac];
+        }
+    }
+    public String getReferenci(int indeks){
+        return referenci[indeks];
+    }
+    public void setProseciOdSrednoObrazovanie(int [] proseci){
+        for(int brojac=0;brojac<4;brojac++){
+            this.proseciOdSrednoObrazovanie[brojac]=proseci[brojac];
+        }
+    }
+    public int getProseciOdSrednoObrazovanie(int indeks){
+        return proseciOdSrednoObrazovanie[indeks];
     }
     public void setLokacija(String l){
         this.lokacija=l;

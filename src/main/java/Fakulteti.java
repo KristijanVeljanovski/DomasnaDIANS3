@@ -11,7 +11,11 @@ public class Fakulteti {
     private boolean nagradeniStudenti;
     private boolean daliPolozil;
     private String [] predmeti;
-    public Fakulteti(String ime,String adresa,String mesto,float oddalecenost,int rabotnoVreme,String dejnosti,String [] smerovi,int [] indeksi,float [] proseci,boolean nagradeniStudenti,boolean daliPolozil){
+    private int brojNaVlez;
+    private int brojNaSprat;
+    private StudentskiDomovi dom;
+    private StudentiKoiTrebaDaSeNavigiraat student;
+    public Fakulteti(String ime,String adresa,String mesto,float oddalecenost,int rabotnoVreme,String dejnosti,String [] smerovi,int [] indeksi,float [] proseci,boolean nagradeniStudenti,boolean daliPolozil,int brojNaVlez,int brojNaSprat,StudentskiDomovi dom,StudentiKoiTrebaDaSeNavigiraat student){
         this.ime=ime;
         this.adresa=adresa;
         this.mesto=mesto;
@@ -32,6 +36,34 @@ public class Fakulteti {
         for(int brojac=0;brojac<predmeti.length;brojac++){
             this.predmeti[brojac]=predmeti[brojac];
         }
+        this.brojNaVlez=brojNaVlez;
+        this.brojNaSprat=brojNaSprat;
+        this.dom=dom;
+        this.student=student;
+    }
+    public void setStudent(StudentiKoiTrebaDaSeNavigiraat s){
+        this.student=s;
+    }
+    public StudentiKoiTrebaDaSeNavigiraat getStudent(){
+        return student;
+    }
+    public void setDom(StudentskiDomovi d){
+        this.dom=d;
+    }
+    public StudentskiDomovi getDom(){
+        return dom;
+    }
+    public void setBrojNaSprat(int brojce){
+        this.brojNaSprat=brojce;
+    }
+    public int getBrojNaSprat(){
+        return brojNaSprat;
+    }
+    public void setBrNaVlez(int broj){
+        this.brojNaVlez=broj;
+    }
+    public int getBrNaVlez(){
+        return brojNaVlez;
     }
     public void setDaliPolozil(boolean polozil){
         this.daliPolozil=polozil;
@@ -149,7 +181,8 @@ public class Fakulteti {
     /***********************************************************************************************************/
     public int brojNaSprat(int broj){
         boolean daliETocnaNavigacijata=false;
-        if(broj==-1 || broj==0 || broj==1 || broj==2){
+        //broj==-1 || broj==0 || broj==1 || broj==2
+        if(getBrojNaSprat()==-1 || getBrojNaSprat()==0 || getBrojNaSprat()==1 || getBrojNaSprat()==2){
             return broj;
             daliETocnaNavigacijata=true;
         }
@@ -242,4 +275,271 @@ public class Fakulteti {
             }
         }
     }
+    public void getNoviNasokiSporedVlezot(int brojNaVlez,String ime,String kancelarija){
+        if(ime.equals("TMF")){
+            if(brojNaSprat(getBrojNaSprat())){
+                if(getBrojNaSprat()==-1){
+                    if(getBrNaVlez()==1){
+                        if(kancelarija.equals("Lab2") || kancelarija.equals("Lab3")){
+                            System.out.println("Odete pravo po holot");
+                            System.out.println("Svrtete na prvoto desno")
+                        }
+                        else if(kancelarija.equals("Kabinet37") || kancelarija.equals("Kabinet36") || kancelarija.equals("Kabinet35") || kancelarija.equals("Kabinet34") || kancelarija.equals("Kabinet26A") || kancelarija.equals("Kabinet26")){
+                            System.out.println("Odete pravo po holot");
+                            System.out.println("Svrtete na prvoto levo");
+                        }
+                        else if(kancelarija.equals("Lab12") || kancelarija.equals("Lab13")){
+                            System.out.println("Ne mozete da stignete do ovie laboratorii preku ovoj vlez. Ve molime izberete drug");
+                        }
+                    }
+                    if(getBrNaVlez()==2){
+                        if(kancelarija.equals("Lab12") || kancelarija.equals("Lab13")){
+                            System.out.println("Prodolzete pravo na hodnikot i odete do kraj");
+                        }
+                        else if(kancelarija.equals("Kabinet37") || kancelarija.equals("Kabinet36") || kancelarija.equals("Kabinet35") || kancelarija.equals("Kabinet34") || kancelarija.equals("Kabinet26A") || kancelarija.equals("Kabinet26")){
+                            System.out.println("Svrtete na prvoto levo");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Lab2") || kancelarija.equals("Lab3")){
+                            System.out.println("Svrtete na prvoto levo");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete na prvoto desno");
+                        }
+                    }
+                    if(getBrNaVlez()==3){
+                        if(kancelarija.equals("Lab12") || kancelarija.equals("Lab13")){
+                            System.out.println("Svrtete na prvoto desno");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete na prvoto levo");
+                        }
+                        else if(kancelarija.equals("Kabinet37") || kancelarija.equals("Kabinet36") || kancelarija.equals("Kabinet35") || kancelarija.equals("Kabinet34") || kancelarija.equals("Kabinet26A") || kancelarija.equals("Kabinet26")){
+                            System.out.println("Svrtete na prvoto desno");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Lab2") || kancelarija.equals("Lab3")){
+                            System.out.println("Prodolzete po hodnikot i odete do kraj");
+                        }
+                    }
+                }
+                if(getBrojNaSprat()==0){
+                    if(getBrNaVlez()==1){
+                        if(kancelarija.equals("Lab138") || kancelarija.equals("AmfiteatarTMF")){
+                            System.out.println("Prodolzete pravo na hodnikot do kraj");
+                        }
+                        else if(kancelarija.equals("Kabinet122")){
+                            System.out.println("Svrtete na prvoto desno");
+                            System.out.println("Prodolzete pravo na hodnikot");
+                            System.out.println("Svrtete na prvoto levo");
+                        }
+                        else if(kancelarija.equals("114") || kancelarija.equals("115") || kancelarija.equals("116") || kancelarija.equals("KabinetX") || kancelarija.equals("117")){
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete na desno");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete na levo");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                        }
+                    }
+                    else if(getBrNaVlez()==2){
+                        if(kancelarija.equals("Kabinet122")){
+                            System.out.println("Prodolzete po hodnikot. Kabinetot e na samiot pocetok");
+                        }
+                        else if(kancelarija.equals("114") || kancelarija.equals("115") || kancelarija.equals("116") || kancelarija.equals("KabinetX") || kancelarija.equals("117")){
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Prodolzete po hodnikot i vlezete na drugiot");
+                            System.out.println("Vlezete na vtoriot hodnik");
+                            System.out.println("Prodolzete pravo po hodnikot");
+                        }
+                        else if(kancelarija.equals("Lab138") || kancelarija.equals("AmfiteatarTMF")){
+                            System.out.println("Svrtete na prvoto levo");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete na prvoto desno");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                    }
+                    else if(getBrNaVlez()==3){
+                        if(kancelarija.equals("114") || kancelarija.equals("115") || kancelarija.equals("116") || kancelarija.equals("KabinetX") || kancelarija.equals("117")){
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                        }
+                        else if(kancelarija.equals("122")){
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Prodolzete po hodnikot i vlezete na drugiot");
+                            System.out.println("Vlezete na vtoriot hodnik");
+                            System.out.println("Prodolzete pravo po hodnikot");
+                        }
+                        else if(kancelarija.equals("Lab138") || kancelarija.equals("AmfiteatarTMF")){
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete nadesno na sledniot hodnik");
+                            System.out.println("Odete do samiot kraj");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Kabinetite se na samiot vlez na hodnikot");
+                        }
+                    }
+                }
+                if(getBrojNaSprat()==1){
+                    if(getBrNaVlez()==1){
+                        if(kancelarija.equals("Lab200A") || kancelarija.equals("Lab200B")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Laboratoriite se naogaat na celo pred vas");
+                        }
+                        else if(kancelarija.equals("Predavalna 203")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot do kraj");
+                            System.out.println("Svrtete nadesno");
+                        }
+                        else if(kancelarija.equals("Lab200V")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot do kraj");
+                            System.out.println("Svrtete nalevo");
+                        }
+                        else if(kancelarija.equals("Lab215") || kancelarija.equals("Predavalna216")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nalevo");
+                            System.out.println("Prodolzete po hodnikot do kraj");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Kabinet222")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nalevo");
+                            System.out.println("Prodolzete po hodnikot do kraj");
+                            System.out.println("Svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                    }
+                    else if(getBrNaVlez()==2){
+                        if(kancelarija.equals("Lab215") || kancelarija.equals("Predavalna216")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Svrtete na prvot levo");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Kabinet222")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Svrtete na prvoto levo");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Koga ke izlezete od hodnikot prodolzete pravo");
+                            System.out.println("Vlezete na sledniot hodnik");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Lab200A") || kancelarija.equals("Lab200B")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete nadesno");
+                            System.out.println("Laboratoriite se na vidik");
+                        }
+                        else if(kancelarija.equals("Predavalna203")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot i odete do krajot");
+                            System.out.println("Svrtete nadesno");
+                        }
+                        else if(kancelarija.equals("Lab200V")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot i odete do krajot");
+                            System.out.println("Svrtete nalevo");
+                        }
+                    }
+                }
+                if(getBrojNaSprat()==2){
+                    if(getBrNaVlez()==1){
+                        if(kancelarija.equals("Predavalna315")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nalevo");
+                            System.out.println("Odete do krajot na hodnikot");
+                            System.out.println("Svrtete nalevo po hodnikot");
+                        }
+                        else if(kancelarija.equals("Kabinet 321") || kancelarija.equals("Kabinet 322") || kancelarija.equals("Kabinet 332")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nalevo");
+                            System.out.println("Odete do krajot na hodnikot");
+                            System.out.println("Svrtete nadesno po hodnikot");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Predavalna302")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Odete do krajot na hodnikot");
+                            System.out.println("Svrtete nadesno na pocetokot na hodnikot");
+                        }
+                    }
+                    else if(getBrNaVlez()==2){
+                        if(kancelarija.equals("Predavalna315")){
+                            System.out.println("Otkako ke se kacite po skalite prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Predavalna302")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot do samiot kraj");
+                            System.out.println("Svrtete nalevo na sledniot hodnik");
+                            System.out.println("Predavalnata e na samiot pocetok na hodnikot");
+                        }
+                        else if(kancelarija.equals("Kabinet 321") || kancelarija.equals("Kabinet 322") || kancelarija.equals("Kabinet 332")){
+                            System.out.println("Otkako ke se kacite po skalite prodolzete po hodnikot");
+                            System.out.println("Odete do samiot kraj na hodnikot");
+                            System.out.println("Izlezete na hodnikot sred spratot");
+                            System.out.println("Vlezete vo hodnikot pred vas");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                    }
+                    else if(getBrNaVlez()==3){
+                        if(kancelarija.equals("Predavalna315")){
+                            System.out.println("Otkako ke se kacite po skalite prodolzete po hodnikot");
+                            System.out.println("Odete do samiot kraj na hodnikot");
+                            System.out.println("Izlezete na hodnikot sred spratot");
+                            System.out.println("Vlezete vo hodnikot pred vas");
+                            System.out.println("Prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Kabinet 321") || kancelarija.equals("Kabinet 322") || kancelarija.equals("Kabinet 332")){
+                            System.out.println("Otkako ke se kacite po skalite prodolzete po hodnikot");
+                        }
+                        else if(kancelarija.equals("Predavalna302")){
+                            System.out.println("Otkako ke se kacite po skalite prodolzete po hodnikot");
+                            System.out.println("Odete do samiot kraj na hodnikot");
+                            System.out.println("Svrtete nalevo na hodnikot");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Svrtete nadesno");
+                            System.out.println("Predavalnata e na samiot pocetok na hodnikot");
+                        }
+                    }
+                    else if(getBrNaVlez()==4){
+                        if(kancelarija.equals("Predavalna302")){
+                            System.out.println("Otkako ke se kacite po skalite prodolzete po hodnikot");
+                            System.out.println("Odete do samiot kraj na hodnikot");
+                            System.out.println("Izlezete na hodnikot sred spratot");
+                            System.out.println("Vlezete vo hodnikot pred vas");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Predavalnata e na samiot pocetok na hodnikot");
+                        }
+                        else if(kancelarija.equals("Kabinet 321") || kancelarija.equals("Kabinet 322") || kancelarija.equals("Kabinet 332")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Odete do krajot na hodnikot");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Kabinetite se na hodnikot");
+                        }
+                        else if(kancelarija.equals("Predavalna315")){
+                            System.out.println("Otkako ke se kacite po skalite svrtete nadesno");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Odete do krajot na hodnikot");
+                            System.out.println("Svrtete nalevo");
+                            System.out.println("Odete do samiot kraj na hodnikot");
+                            System.out.println("Izlezete na hodnikot sred spratot");
+                            System.out.println("Vlezete vo hodnikot pred vas");
+                            System.out.println("Prodolzete po hodnikot");
+                            System.out.println("Predavalnata e na samiot pocetok na hodnikot");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public void proveriDaliNavigaciiteSeDostapni(StudentskiDomovi dom,StudentiKoiTrebaDaSeNavigiraat student,String kancelarija){
+        String lokacijaNaFakultetot=getAdresa();
+        if(!lokacijaNaFakultetot.equals(dom.getAdresa())){
+            getNoviNasokiSporedVlezot(getBrNaVlez(),ime,kancelarija);
+        }
+    }
+
 }

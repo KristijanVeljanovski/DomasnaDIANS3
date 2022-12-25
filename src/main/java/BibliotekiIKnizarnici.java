@@ -16,7 +16,8 @@ public class BibliotekiIKnizarnici {
     private String username,
     private String password;
     private String pateka;
-    public BibliotekiIKnizarnici(String adresa,String mesto,int oddalecenost,int rabotnoVreme,String dejnosti,String [] knigi,String [] bibliotekari,int cenaZaKniga,String [] knigiNaPoracka,int [] rejting,String ime,String [] avtor,int goleminaNaKniga.String username,String password,String pateka){
+    private StudentiKoiTrebaDaSeNavigiraat student;
+    public BibliotekiIKnizarnici(String adresa,String mesto,int oddalecenost,int rabotnoVreme,String dejnosti,String [] knigi,String [] bibliotekari,int cenaZaKniga,String [] knigiNaPoracka,int [] rejting,String ime,String [] avtor,int goleminaNaKniga.String username,String password,String pateka,StudentiKoiTrebaDaSeNavigiraat studenti){
         this.adresa=adresa;
         this.mesto=mesto;
         this.oddalecenost=oddalecenost;
@@ -42,7 +43,14 @@ public class BibliotekiIKnizarnici {
         this.goleminaNaKniga=goleminaNaKniga;
         this.username=username;
         this.password=password;
-        this.pateka=pateka
+        this.pateka=pateka;
+        this.student=student;
+    }
+    public void setStudent(StudentiKoiTrebaDaSeNavigiraat s){
+        this.student=s;
+    }
+    public StudentiKoiTrebaDaSeNavigiraat getStudent(){
+        return student;
     }
     public void setPateka(String nasoka){
         this.pateka=nasoka;
@@ -275,6 +283,151 @@ public class BibliotekiIKnizarnici {
                 System.out.println("Odete posle po bulevar Aleksandar Makedonski do Opshtina Ilinden");
                 System.out.println("Izlezete od A2");
                 System.out.println("Odete od ulica 2 do ulica 9");
+            }
+        }
+    }
+    public boolean vrabotuvanjeNaStudentot(StudentiKoiTrebaDaSeNavigiraat student){
+        String ime;
+        boolean prvTest=false;
+        if(ime.equals(student.getImePrezime())){
+            prvTest=true;
+        }
+        String prezime;
+        boolean vtorTest=false;
+        if(prezime.equals(student.getImePrezime())){
+           vtorTest=true;
+        }
+        int godiniNaKandidatot;
+        boolean tretTest=false;
+        if(godiniNaKandidatot==student.getGodini()){
+            tretTest=true;
+        }
+        int [] proseciOdSrednoObrazovanie=new int[4];
+        boolean cetvrtTest=false;
+        int inkrement=0;
+        for(int brojac=0;brojac<4;brojac++){
+            if(proseciOdSrednoObrazovanie[brojac]==student.getProseciOdSrednoObrazovanie(brojac)){
+                inkrement++;
+            }
+        }
+        if(inkrement==4){
+            cetvrtTest=true;
+        }
+        String [] referenci=new String[100];
+        boolean pettiTest=false;
+        int counter=0;
+        for(int brojac=0;brojac<referenci.length;brojac++){
+            if(referenci[brojac].equals(student.getReferenci(brojac))){
+                counter++;
+            }
+        }
+        if(counter==referenci.length){
+            pettiTest=true;
+        }
+        boolean daliJaDobilRabotata=false;
+        if(prvTest==true && vtorTest==true && tretTest==true && cetvrtTest==true && pettiTest==true) {
+            daliJaDobilRabotata = true;
+        }
+        return daliJaDobilRabotata;
+    }
+    public int checkSupplies(String [] knigiNaPoracka,String [] knigi){
+        int brojNaKnigiNaPoracka=0;
+        for(int brojac=0;brojac<knigiNaPoracka.length;brojac++){
+            if(!knigiNaPoracka[brojac].equals(getKnigiNaPoracka(brojac))){
+                knigi[brojac].equals(knigiNaPoracka[brojac]);
+                brojNaKnigiNaPoracka++;
+            }
+        }
+        return brojNaKnigiNaPoracka;
+    }
+    public void odBibliotekaDoKopirnica(String ime,Knizarnici kopirnica){
+        if(ime.equals("1000 Knigi")){
+            if(kopirnica.getIme().equals("Impegna")){
+                if(getPateka().equals("Bulevar Partizanski Odredi")){
+                    System.out.println("Upatete se jugoistocno na Kej 13ti Noemvri kon Filip Vtori Makedonski");
+                    System.out.println("Svrtete levo na prvata raskrsnica na Filip Vtori Makedonski");
+                    System.out.println("Svrtete nalevo na Bulevar Goce Delcev");
+                    System.out.println("Blago svrtete nalevo na Bulevar Blaze Koneski");
+                    System.out.println("Svrtete nadesno na Bulevar Partizanski Odredi");
+                    System.out.println("Prodolzete pravo");
+                    System.out.println("Svretet nalevo na Franklin Ruzvelt");
+                }
+                else if(getPateka().equals("Mitropolit Teodosij Gologanov")){
+                    System.out.println("Upatete se jugoistocno na Kej 13ti Noemvri kon Filip Vtori Makedonski");
+                    System.out.println("Svrtete desno na prvata raskrsnica na Filip Vtori Makedonski");
+                    System.out.println("Svrtete nadesno na 11ti Oktomvri");
+                    System.out.println("Blago svrtete nalevo na Dimitrie Cupovski");
+                    System.out.println("Prodolzete na Mitropolit Teodosij Gologanov");
+                    System.out.println("Na kruzniot tek,odete na vtoriot izlez i ostanete na mitropolitot");
+                    System.out.println("Svrtete nadesno na Franklin Ruzvelt");
+                }
+                else if(getPateka().equals("Naroden Front")){
+                    System.out.println("Upatete se jugoistocno na Kej 13ti Noemvri kon Filip Vtori Makedonski");
+                    System.out.println("Prodolzete na Filip Vtori Makedonski. Odete po Dimitrie Cupovski do Naroden Front");
+                    System.out.println("Sledete go Naroden Front do Franklin Ruzvelt");
+                    System.out.println("Svrtete nadesno na Franklin Ruzvelt");
+                }
+            }
+        }
+        else if(ime.equals("Brakja Miladinovci")){
+            if(kopirnica.getIme().equals("Ekvus")){
+                if(getPateka().equals("Orce Nikolov")){
+                    System.out.println("Upatete se severoistocni na Antonie Grubisik koon ulica Debarca");
+                    System.out.println("Antonie Grubisikj vrti nalevo i stanuva Oton Zupancikj");
+                    System.out.println("Svrtete nadesno na Zivko Cingo");
+                    System.out.println("Svrtete nalevo na Orce Nikolov");
+                    System.out.println("Svrtete nalevo na Nikola Tesla");
+                    System.out.println("Svretete nadesno na Veselin Maslesha");
+                }
+                else if(getPateka().equals("Bulevar Partizanski Odredi")){
+                    System.out.println("Odete po Orce Nikolov i Kosturski Heroi do Bulevar Partizanski Odredi");
+                    System.out.println("Prodolzete na Bulevar Partizanski Odredi do Veselin Maslesha");
+                    System.out.println("Svrtete nalevo na Veselin Maslesha");
+                }
+                else if(getPateka().equals("Orce Nikolov i Franklin Ruzvelt")){
+                    System.out.println("Odete po Orce Nikolov do Franklin Ruzvelt");
+                    System.out.println("Prodolzete po Franklin Ruzvelt di Veselin Maslesha");
+                    System.out.println("Svrtete nalevo na Veselin Maslesha");
+                }
+            }
+        }
+        else if(ime.equals("Jordan Hadzi Konstantinov Dzinot")){
+            if(kopirnica.getIme("Libro")){
+                if(getPateka().equals("Boris Trajkovski")){
+                    System.out.println("Odete po Boris Trajkovski do Drezdenska");
+                    System.out.println("Svrtete nalevo na Drezdenska");
+                }
+                else if(getPateka().equals("Boris Trajkovski i Bulevar Srbija")){
+                    System.out.println("Odete po Boris Trajkovski i Bulevar Srbija do 808");
+                    System.out.println("Prodolzete po 808 do Bulevar Goce Delcev");
+                    System.out.println("Prodolzete na Bulevar Goce Delcev.Odete po Bulevar Partizanski Odredi do Drezdenska");
+                    System.out.println("Svrete nadesno na Drezdenska");
+                }
+            }
+        }
+        else if(ime.equals("Dom na Kultura Ilinden")){
+            if(kopirnica.getIme("Sterna")){
+                if(getPateka().equals("Bulevar Aleksandar Makedonski")){
+                    System.out.println("Odete po ulica 2 i ulica 32 do a2");
+                    System.out.println("Odete po Bulevar Aleksandar Makedonski i Bulevar Nikola Karev do Bulevar 8mi Septemvri");
+                    System.out.println("Prodolzete na Bulevar 8mi Septemvri. Odete do Shekspirova");
+                }
+                else if(getPateka().equals("Bulevar Aleksandar Makedonski i Bulevar Partizanski Odredi")){
+                    System.out.println("Odete po Ulica 2 i Ulica 32 do A2");
+                    System.out.println("Odete po Bulevar Aleksandar Makedonski do Bulevar Krste Petkov Misirkov. Odete na izlezot kon centar od Bulevar Nikola Karev");
+                    System.out.println("Prodolzete po Bulevar Krste Petkov Misirkov.Odete po Bulevar Goce Delcev i Bulevar Partizanski Odredi do Shekspirova");
+                }
+                else if(getPateka().equals("Bulevar Goce Delcev")){
+                    System.out.println("Upatete se zapadno na Ulica 9 kon Ulica 8");
+                    System.out.println("Svrtete nalevo na Ulica 2");
+                    System.out.println("Odete po Ulica 34 do 102/Blagoja Stefkovski");
+                    System.out.println("Blago svrtete nadesno na 102/Blagoja Stefkovski");
+                    System.out.println("Odete po Pero Nakov do Kiro Gligorov");
+                    System.out.println("Svrtete nadesno na Kiro Gligorov");
+                    System.out.println("Prodolzete na 808 do Bulevar Goce Delcev");
+                    System.out.println("Sledete po Bulevar Goce Delcev i Bulevar Partizanski Odredi do Shekspirova");
+                    System.out.println("Blago svrtete nadesno na Shekspirova");
+                }
             }
         }
     }
